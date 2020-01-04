@@ -1,0 +1,2 @@
+docker build -t exercise1-14 .
+docker run -it -p 3000:3000 exercise1-14
