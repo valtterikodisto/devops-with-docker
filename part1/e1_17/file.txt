@@ -1,0 +1,2 @@
+I created a minimal setup for typescript development.
+https://hub.docker.com/r/valtterikodisto/setup
