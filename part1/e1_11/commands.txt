@@ -1,0 +1,3 @@
+docker build -t exercise1-11 .
+touch logs.txt
+docker run -it -p 8000:8000 -v $(pwd)/logs.txt:/backend/logs.txt exercise1-11

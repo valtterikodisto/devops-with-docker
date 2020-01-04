@@ -1,0 +1,5 @@
+cd frontend && docker build -t exercise1-12-frontend . && cd ..
+cd backend && docker build -t exercise1-12-backend . && cd ..
+
+docker run -d -p 5000:5000 exercise1-12-frontend
+docker run -d -p 8000:8000 exercise1-12-backend
