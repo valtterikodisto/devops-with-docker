@@ -1,0 +1,4 @@
+docker run -d devopsdockeruh/exec_bash_exercise
+docker exec -it sad_curie bash
+
+Docker is easy
