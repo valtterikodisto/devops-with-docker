@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  backend:
+    image: exercise-2-3/backend
+    build: ./backend/
+    ports:
+      - 8000:8000
+
+  frontend:
+    image: exercise-2-3/frontend
+    build: ./frontend/
+    ports:
+      - 5000:5000
