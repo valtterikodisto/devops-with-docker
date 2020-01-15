@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  proxy:
+    image: jwilder/nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+      - frontend
+
+  backend:
+    # Image was built in e2_3
+    image: exercise-2-3/backend
+    ports:
+      - 8000:8000
+    environment:
+      - DB_USERNAME=user
+      - DB_PASSWORD=example
+      - DB_HOST=db
+      - REDIS=redis
+      - REDIS_PORT=6379
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    # Image was built in e2_3
+    image: exercise-2-3/frontend
+    ports:
+      - 5000:5000
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_USER=user
+
+  redis:
+    image: redis
